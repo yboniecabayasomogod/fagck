@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './assets/Information.js/Home';
-import About from './assets/Information.js/About';
-import Contact from './assets/Information.js/Contact';
+import Home from './assets/Information/Home';
+import About from './assets/Information/About';
+import Contact from './assets/Information/Contact';
 
 function App() {
   return (
