@@ -33,7 +33,7 @@ function HomePage() {
               About Us
             </a>
             <a
-              href="/members"
+              href="/MembersPage"
               className="bg-green-600 text-white px-6 py-2 rounded-full hover:bg-green-700 transition"
             >
               View Members
