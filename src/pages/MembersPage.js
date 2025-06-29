@@ -3,6 +3,8 @@ import { collection, getDocs, doc, updateDoc } from "firebase/firestore";
 import { db } from "../database/firebase";
 import { Link } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 const MembersPage = () => {
   const [members, setMembers] = useState([]);
@@ -54,9 +56,10 @@ const MembersPage = () => {
   };
 
   return (
+    <div>
+      <Navbar />
     <div className="max-w-4xl mx-auto px-4 py-8">
       <h2 className="text-3xl font-bold text-center text-blue-700 mb-6">Church Members</h2>
-
       <div className="space-y-4">
         {members.map((member) => (
           <div key={member.id} className="border rounded-lg shadow p-4">
@@ -116,6 +119,7 @@ const MembersPage = () => {
           </div>
         ))}
       </div>
+    </div>
     </div>
   );
 };
