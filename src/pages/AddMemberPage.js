@@ -1,80 +1,76 @@
-import React, { useState } from "react";
-import { collection, addDoc } from "firebase/firestore";
-import { db } from "../database/firebase"; // Make sure path is correct
+import React, { useEffect, useState } from "react";
+import { collection, addDoc, getDocs } from "firebase/firestore";
+import { db } from "../database/firebase";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
-const AddMember = () => {
-  const [member, setMember] = useState({
-    name: "",
-    age: "",
-    contact: "",
-    ministry: "",
-  });
+function AddMemberPage() {
+  const [name, setName] = useState("");
+  const [ministry, setMinistry] = useState("");
+  const [underDiscipleId, setUnderDiscipleId] = useState("");
+  const [members, setMembers] = useState([]);
 
-  const handleChange = (e) => {
-    setMember({ ...member, [e.target.name]: e.target.value });
-  };
+  useEffect(() => {
+    const fetchMembers = async () => {
+      const querySnapshot = await getDocs(collection(db, "members"));
+      const data = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setMembers(data);
+    };
+    fetchMembers();
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    try {
-      await addDoc(collection(db, "members"), member);
-      alert("Member added successfully!");
-      setMember({ name: "", age: "", contact: "", ministry: "" });
-    } catch (error) {
-      console.error("Error adding member:", error);
-      alert("Error adding member. Check the console.");
-    }
+    await addDoc(collection(db, "members"), {
+      name,
+      ministry,
+      under_disciple_id: underDiscipleId || null,
+    });
+
+    setName("");
+    setMinistry("");
+    setUnderDiscipleId("");
+    alert("Member added!");
   };
 
   return (
-    <div className="max-w-lg mx-auto mt-10 p-6 bg-white rounded shadow">
-      <h2 className="text-2xl font-bold text-center mb-4 text-blue-700">Add Member</h2>
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <input
-          type="text"
-          name="name"
-          value={member.name}
-          onChange={handleChange}
-          placeholder="Full Name"
-          required
-          className="w-full border p-2 rounded"
-        />
-        <input
-          type="number"
-          name="age"
-          value={member.age}
-          onChange={handleChange}
-          placeholder="Age"
-          required
-          className="w-full border p-2 rounded"
-        />
-        <input
-          type="text"
-          name="contact"
-          value={member.contact}
-          onChange={handleChange}
-          placeholder="Contact Number"
-          required
-          className="w-full border p-2 rounded"
-        />
-        <input
-          type="text"
-          name="ministry"
-          value={member.ministry}
-          onChange={handleChange}
-          placeholder="Ministry (e.g., Music, Youth)"
-          className="w-full border p-2 rounded"
-        />
-        <button
-          type="submit"
-          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
-        >
-          Add Member
-        </button>
-      </form>
+    <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
+      <Navbar />
+
+      <div style={{ flex: 1, padding: "20px" }}>
+        <h2>Add Member</h2>
+        <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "10px", maxWidth: "400px" }}>
+          <div>
+            <span>Name: </span>
+            <input value={name} onChange={(e) => setName(e.target.value)} required />
+          </div>
+
+          <div>
+            <span>Ministry: </span>
+            <input value={ministry} onChange={(e) => setMinistry(e.target.value)} />
+          </div>
+
+          <div>
+            <span>Leader: </span>
+            <select value={underDiscipleId} onChange={(e) => setUnderDiscipleId(e.target.value)}>
+              <option value="">None</option>
+              {members.map((m) => (
+                <option key={m.id} value={m.id}>{m.name}</option>
+              ))}
+            </select>
+          </div>
+
+          <button type="submit">Save</button>
+        </form>
+      </div>
+
+      <Footer />
     </div>
   );
-};
+}
 
-export default AddMember;
+export default AddMemberPage;

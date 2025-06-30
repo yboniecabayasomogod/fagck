@@ -15,7 +15,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/FirstAssemblyOfGod" element={<HomePage />} />
+        <Route path="/fagck" element={<HomePage />} />
         <Route path="/About" element={<AboutPage />} />
         <Route path="/MissionVisionPage" element={<MissionVisionPage />} />
         <Route path="/SchedulePage" element={<SchedulePage />} />
