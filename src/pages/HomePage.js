@@ -8,7 +8,7 @@ function HomePage() {
       <Navbar />
 
       <div style={{ flex: 1, padding: '40px 20px', textAlign: 'center', backgroundColor: '#f8f9fa' }}>
-        <h1 className="text-center mb-4" style={{ fontWeight: 'bold', fontSize: '2rem', color: '#333' }}>Welcome to First Assembly(FAGCK) Cell Group!</h1>
+        <h1 className="text-center mb-4" style={{ fontWeight: 'bold', fontSize: '2rem', color: '#333' }}>Welcome to First Assembly of God(FAGCK) Cell Group!</h1>
         <p className="lead mb-4 fs-4 text-dark">Growing together in Christ and community.</p>
 
          <div className="d-flex justify-content-center flex-wrap mb-5 gap-4">
@@ -25,6 +25,7 @@ function HomePage() {
           >
             View Members
           </Link>
+          {" "}
           <Link 
             to="/AddMemberPage" 
             className="btn px-5 py-3 fw-semibold border-0 shadow" 
