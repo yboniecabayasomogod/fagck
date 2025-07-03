@@ -66,11 +66,10 @@ function AddMemberPage() {
       <Navbar />
 
       <div style={{ flex: 1, padding: "40px 20px", maxWidth: 600, margin: "0 auto" }}>
-        <h2 className="mb-4 text-center">Add New Member</h2>
-
+        <h1 className="text-center mb-4" style={{ fontWeight: 'bold', fontSize: '2rem', color: '#333' }}>Add New Member</h1>
         <form onSubmit={handleSubmit} className="border p-4 rounded shadow-sm bg-light">
           <div className="mb-4">
-            <label className="form-label fw-bold mb-2">First Name</label>
+            <label className="form-label fw-bold mb-2">First Name</label>{" "}
             <input
               type="text"
               className="form-control border rounded px-3 py-2"
@@ -81,7 +80,7 @@ function AddMemberPage() {
           </div>
 
           <div className="mb-4">
-            <label className="form-label fw-bold mb-2">Middle Name</label>
+            <label className="form-label fw-bold mb-2">Middle Name</label>{" "}
             <input
               type="text"
               className="form-control border rounded px-3 py-2"
@@ -91,7 +90,7 @@ function AddMemberPage() {
           </div>
 
           <div className="mb-4">
-            <label className="form-label fw-bold mb-2">Last Name</label>
+            <label className="form-label fw-bold mb-2">Last Name</label>{" "}
             <input
               type="text"
               className="form-control border rounded px-3 py-2"
@@ -102,7 +101,7 @@ function AddMemberPage() {
           </div>
 
           <div className="mb-4">
-            <label className="form-label fw-bold mb-2">Suffix (if any)</label>
+            <label className="form-label fw-bold mb-2">Suffix (if any)</label>{" "}
             <input
               type="text"
               className="form-control border rounded px-3 py-2"
@@ -112,7 +111,7 @@ function AddMemberPage() {
           </div>
 
           <div className="mb-4">
-            <label className="form-label fw-bold mb-2">Birthdate</label>
+            <label className="form-label fw-bold mb-2">Birthdate</label>{" "}
             <input
               type="date"
               className="form-control border rounded px-3 py-2"
@@ -122,7 +121,7 @@ function AddMemberPage() {
           </div>
 
           <div className="mb-4">
-            <label className="form-label fw-bold mb-2">Gender</label>
+            <label className="form-label fw-bold mb-2">Gender</label>{" "}
             <select
               className="form-select"
               value={gender}
@@ -135,7 +134,7 @@ function AddMemberPage() {
           </div>
 
           <div className="mb-4">
-            <label className="form-label fw-bold mb-2">Contact Number</label>
+            <label className="form-label fw-bold mb-2">Contact Number</label>{" "}
             <input
               type="tel"
               className="form-control border rounded px-3 py-2"
@@ -145,7 +144,7 @@ function AddMemberPage() {
           </div>
 
           <div className="mb-4">
-            <label className="form-label fw-bold mb-2">Email</label>
+            <label className="form-label fw-bold mb-2">Email</label>{" "}
             <input
               type="email"
               className="form-control border rounded px-3 py-2"
@@ -155,7 +154,7 @@ function AddMemberPage() {
           </div>
 
           <div className="mb-4">
-            <label className="form-label fw-bold mb-2">Address</label>
+            <label className="form-label fw-bold mb-2">Address</label>{" "}
             <input
               type="text"
               className="form-control border rounded px-3 py-2"
@@ -165,7 +164,7 @@ function AddMemberPage() {
           </div>
 
           <div className="mb-4">
-            <label className="form-label fw-bold mb-2">Ministry</label>
+            <label className="form-label fw-bold mb-2">Ministry</label>{" "}
             <input
               type="text"
               className="form-control border rounded px-3 py-2"
@@ -175,7 +174,7 @@ function AddMemberPage() {
           </div>
 
           <div className="mb-4">
-            <label className="form-label fw-bold mb-2">Under Leader</label>
+            <label className="form-label fw-bold mb-2">Under Leader</label>{" "}
             <select
               className="form-select"
               value={underDiscipleId}
@@ -191,13 +190,20 @@ function AddMemberPage() {
           </div>
 
           <div className="d-grid">
-            <button className="btn btn-success" type="submit">
+            <button className="btn btn-success px-5 py-3 fw-semibold border-0 shadow"
+            style={{ 
+              borderRadius: '12px', 
+              fontSize: '1.2rem', 
+              backgroundColor: '#007bff', 
+              color: '#fff', 
+              transition: 'all 0.3s ease' 
+            }} type="submit">
               Save Member
             </button>
           </div>
         </form>
       </div>
-
+      
       <Footer />
     </div>
   );

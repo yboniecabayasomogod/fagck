@@ -67,8 +67,7 @@ function EditMemberPage() {
       <Navbar />
 
       <div style={{ flex: 1, padding: "40px 20px", maxWidth: 600, margin: "0 auto" }}>
-        <h2 className="mb-4 text-center">Edit Member</h2>
-
+        <h1 className="text-center mb-4" style={{ fontWeight: 'bold', fontSize: '2rem', color: '#333' }}>Edit Member</h1>
         <div className="mb-4">
           <label className="form-label fw-bold">Select Member</label>
           <select
@@ -100,7 +99,7 @@ function EditMemberPage() {
               { label: "Ministry", name: "ministry" },
             ].map(({ label, name, type = "text", options }) => (
               <div className="mb-4" key={name}>
-                <label className="form-label fw-bold mb-2">{label}</label>
+                <label className="form-label fw-bold mb-2">{label}</label>{" "}
                 {type === "select" ? (
                   <select
                     className="form-select"
@@ -145,7 +144,14 @@ function EditMemberPage() {
             </div>
 
             <div className="d-grid">
-              <button className="btn btn-primary" type="submit">
+                <button className="btn btn-success px-5 py-3 fw-semibold border-0 shadow"
+            style={{ 
+              borderRadius: '12px', 
+              fontSize: '1.2rem', 
+              backgroundColor: '#28a745', 
+              color: '#fff', 
+              transition: 'all 0.3s ease' 
+            }} type="submit">
                 Update Member
               </button>
             </div>
